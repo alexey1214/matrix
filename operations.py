@@ -1,3 +1,18 @@
+import re
+
+
+def _parse(text):
+    matrix = []
+    re_numbers = re.compile(r'\d+')
+
+    for line in text.split('\n'):
+        if line.startswith('|'):
+            numbers = re_numbers.findall(line)
+            matrix.append([int(n) for n in numbers])
+
+    return matrix
+
+
 def _traverse(matrix):
     traversal = []
     size = len(matrix)
