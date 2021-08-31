@@ -1,5 +1,20 @@
 import re
 
+import aiohttp
+
+from aiohttp import InvalidURL, ClientError
+
+
+async def _fetch(url):
+    async with aiohttp.ClientSession() as session:  # TODO: Reuse session
+        try:
+            async with session.get(url) as response:
+                return await response.text()
+        except InvalidURL:
+            raise ValueError(f'Invalid URL "{url}"')
+        except ClientError:
+            raise
+
 
 def _parse(text):
     matrix = []
