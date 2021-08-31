@@ -2,7 +2,7 @@ import pytest
 
 from aiohttp import ClientError
 
-from operations import _fetch
+from matrix import operations
 
 
 @pytest.mark.asyncio
@@ -17,7 +17,7 @@ async def test_correct_response():
              '+-----+-----+-----+-----+\n' \
              '| 130 | 140 | 150 | 160 |\n' \
              '+-----+-----+-----+-----+\n'
-    text = await _fetch(url)
+    text = await operations._fetch(url)
     assert text == answer
 
 
@@ -25,11 +25,11 @@ async def test_correct_response():
 async def test_invalid_url():
     with pytest.raises(ValueError, match=f'Invalid URL "*"'):
         url = 'invalid_url'
-        await _fetch(url)
+        await operations._fetch(url)
 
 
 @pytest.mark.asyncio
 async def test_client_error():
     with pytest.raises(ClientError):
         url = 'https://f00.backblazeb2.com/file/am-avito/matrix.txt'
-        await _fetch(url)
+        await operations._fetch(url)

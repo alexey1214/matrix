@@ -1,10 +1,10 @@
-from operations import _parse
+from matrix import operations
 
 
 def test_empty():
     text = ''
     answer = []
-    assert _parse(text) == answer
+    assert operations._parse(text) == answer
 
 
 def test_one():
@@ -12,7 +12,7 @@ def test_one():
            '|  10 |\n' \
            '+-----+'
     answer = [[10]]
-    assert _parse(text) == answer
+    assert operations._parse(text) == answer
 
 
 def test_four():
@@ -31,4 +31,4 @@ def test_four():
         [90, 100, 110, 120],
         [130, 140, 150, 160],
     ]
-    assert _parse(text) == answer
+    assert operations._parse(text) == answer

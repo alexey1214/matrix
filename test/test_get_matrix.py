@@ -1,6 +1,6 @@
 import pytest
 
-from operations import get_matrix
+from matrix.operations import get_matrix
 
 
 @pytest.mark.asyncio

@@ -1,16 +1,16 @@
-from operations import _traverse
+from matrix import operations
 
 
 def test_empty():
     matrix = []
     answer = []
-    assert _traverse(matrix) == answer
+    assert operations._traverse(matrix) == answer
 
 
 def test_one():
     matrix = [[10]]
     answer = [10]
-    assert _traverse(matrix) == answer
+    assert operations._traverse(matrix) == answer
 
 
 def test_two():
@@ -22,7 +22,7 @@ def test_two():
         10, 30,
         40, 20,
     ]
-    assert _traverse(matrix) == answer
+    assert operations._traverse(matrix) == answer
 
 
 def test_three():
@@ -36,7 +36,7 @@ def test_three():
         80, 90, 60,
         30, 20, 50,
     ]
-    assert _traverse(matrix) == answer
+    assert operations._traverse(matrix) == answer
 
 
 def test_four():
@@ -52,7 +52,7 @@ def test_four():
         80, 40, 30, 20,
         60, 100, 110, 70,
     ]
-    assert _traverse(matrix) == answer
+    assert operations._traverse(matrix) == answer
 
 
 def test_five():
@@ -70,4 +70,4 @@ def test_five():
         20, 70, 120, 170, 180,
         190, 140, 90, 80, 130,
     ]
-    assert _traverse(matrix) == answer
+    assert operations._traverse(matrix) == answer
