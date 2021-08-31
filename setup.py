@@ -16,11 +16,15 @@ setuptools.setup(
         'Bug Tracker': 'https://github.com/alexey1214/matrix/issues'
     },
     classifiers=[
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
+        'Programming Language :: Python :: 3',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
     ],
-    package_dir={'': 'matrix'},
-    packages=setuptools.find_packages(where="matrix"),
+    packages=['matrix'],
+    install_requires=[
+        'aiohttp',
+        'cchardet',
+        'aiodns',
+    ],
     python_requires=">=3.9",
 )
