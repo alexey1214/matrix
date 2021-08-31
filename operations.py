@@ -1,11 +1,13 @@
 import re
 
+from typing import List
+
 import aiohttp
 
 from aiohttp import InvalidURL, ClientError
 
 
-async def _fetch(url):
+async def _fetch(url: str) -> str:
     async with aiohttp.ClientSession() as session:  # TODO: Reuse session
         try:
             async with session.get(url) as response:
@@ -16,7 +18,7 @@ async def _fetch(url):
             raise
 
 
-def _parse(text):
+def _parse(text: str) -> List[List[int]]:
     matrix = []
     re_numbers = re.compile(r'\d+')
 
@@ -28,7 +30,7 @@ def _parse(text):
     return matrix
 
 
-def _traverse(matrix):
+def _traverse(matrix: List[List[int]]) -> List[int]:
     traversal = []
     size = len(matrix)
 
@@ -51,3 +53,12 @@ def _traverse(matrix):
             traversal.append(elem)
 
     return traversal
+
+
+async def get_matrix(url: str) -> List[int]:
+    try:
+        text = await _fetch(url)
+    except Exception:
+        raise
+    matrix = _parse(text)
+    return _traverse(matrix)
