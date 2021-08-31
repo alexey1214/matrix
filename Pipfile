@@ -12,6 +12,7 @@ aiodns = "*"
 pytest = "*"
 pytest-asyncio = "*"
 coverage = "*"
+build = "*"
 
 [requires]
 python_version = "3.9"
